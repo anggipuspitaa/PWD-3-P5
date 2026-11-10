@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toko Alat Tulis</title>
+<style>
+  :root { --ink:#1f2a44; --muted:#5b6478; --line:#d8dde6; --bg:#f4f6f8; --card:#ffffff; --accent:#0f766e; --danger:#b42318; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: Georgia, "Times New Roman", serif; background:var(--bg); color:var(--ink); line-height:1.5; }
+  header { padding:28px 5vw 8px; }
+  header h1 { margin:0; font-size:2rem; }
+  header p { margin:4px 0 0; color:var(--muted); font-family: system-ui, sans-serif; }
+  .layout { display:grid; grid-template-columns: 1fr 340px; gap:24px; padding:20px 5vw 40px; align-items:start; }
+  h2 { font-size:1.2rem; margin:0 0 14px; }
+  #daftar-produk { display:grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap:14px; }
+  .kartu { background:var(--card); border:1px solid var(--line); border-radius:6px; padding:16px; display:flex; flex-direction:column; gap:6px; }
+  .kartu h3 { margin:0; font-size:1.05rem; }
+  .harga { font-family: system-ui, sans-serif; font-weight:600; }
+  .stok { font-family: system-ui, sans-serif; font-size:.85rem; color:var(--muted); }
+  button { font-family: system-ui, sans-serif; font-size:.9rem; padding:8px 12px; border-radius:4px; border:1px solid var(--ink); background:var(--ink); color:#fff; cursor:pointer; }
+  button:hover { background:#2d3b5e; }
+  button:focus-visible { outline:3px solid var(--accent); outline-offset:2px; }
+  button.sekunder { background:transparent; color:var(--ink); }
+  button.sekunder:hover { background:#e8ecf2; }
+  button.hapus { background:transparent; color:var(--danger); border-color:var(--danger); padding:4px 10px; }
+  button.hapus:hover { background:#fdecea; }
+  button:disabled { opacity:.5; cursor:not-allowed; }
+  .kartu button { margin-top:auto; }
+  aside { background:var(--card); border:1px solid var(--line); border-radius:6px; padding:18px; position:sticky; top:16px; }
+  #daftar-keranjang { list-style:none; margin:0 0 12px; padding:0; font-family: system-ui, sans-serif; }
+  #daftar-keranjang li { display:flex; justify-content:space-between; align-items:center; gap:8px; padding:8px 0; border-bottom:1px solid var(--line); }
+  .kosong { color:var(--muted); font-family: system-ui, sans-serif; font-size:.9rem; }
+  #ringkasan-keranjang { font-family: system-ui, sans-serif; margin:12px 0; }
+  #total-harga { font-size:1.3rem; font-weight:700; }
+  .aksi { display:flex; flex-wrap:wrap; gap:8px; }
+  #ringkasan-pesanan { margin-top:16px; padding-top:12px; border-top:1px dashed var(--line); font-family: system-ui, sans-serif; font-size:.92rem; }
+  @media (max-width: 800px) { .layout { grid-template-columns: 1fr; } aside { position:static; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Toko Alat Tulis</h1>
+  <p>Pilih produk, tambahkan ke keranjang, lalu checkout.</p>
+</header>
+
+<main class="layout">
+  <section>
+    <h2>Daftar Produk</h2>
+    <div id="daftar-produk"></div>
+  </section>
+
+  <aside>
+    <h2>Keranjang</h2>
+    <p id="keranjang-kosong" class="kosong">Keranjang masih kosong.</p>
+    <ul id="daftar-keranjang"></ul>
+    <div id="ringkasan-keranjang"></div>
+    <div class="aksi">
+      <button id="btn-checkout">Checkout</button>
+      <button id="btn-batal" class="sekunder">Batalkan item terakhir</button>
+      <button id="btn-kosongkan" class="sekunder">Kosongkan</button>
+    </div>
+    <div id="ringkasan-pesanan"></div>
+  </aside>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
